@@ -1,0 +1,14 @@
+{
+  "name": "talk-svg",
+  "version": "1.0.0",
+  "description": "TNG Techday talk \"You should be using SVG\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gerd Zschaler <gzschaler@googlemail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "spectacle": "^4.3.1"
+  }
+}
