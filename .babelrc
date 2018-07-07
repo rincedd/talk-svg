@@ -1,0 +1,19 @@
+{
+  "presets": [
+    "env",
+    "react"
+  ],
+  "plugins": [
+    "react-hot-loader/babel"
+  ],
+  "env": {
+    "production": {
+      "plugins": [
+        "transform-react-remove-prop-types",
+        "transform-react-constant-elements",
+        "transform-react-inline-elements",
+        "transform-runtime"
+      ]
+    }
+  }
+}
