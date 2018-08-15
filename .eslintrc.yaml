@@ -11,12 +11,12 @@
   "react/no-multi-comp": 0
 
 "env":
-  "browser": true,
+  "browser": true
   "node": true
 "globals":
-  "afterEach": true,
-  "describe": true,
-  "expect": true,
-  "it": true,
-  "jest": true,
+  "afterEach": true
+  "describe": true
+  "expect": true
+  "it": true
+  "jest": true
   "test": true

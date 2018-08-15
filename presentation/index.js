@@ -5,6 +5,8 @@ import {
 } from 'spectacle';
 import createTheme from 'spectacle/lib/themes/default';
 import background from '../assets/donnie-rosie-605394-unsplash.jpg';
+import { LiveEdit } from './live-edit';
+import { SampleSvg } from './sample-svg';
 import { hideSearchLight, showSearchLight } from './searchlight';
 
 const images = {
@@ -36,13 +38,7 @@ const theme = createTheme(
 export default class Presentation extends Component {
   render() {
     return (
-      <Deck
-        transition={['fade']}
-        transitionDuration={500}
-        theme={theme}
-        contentWidth={1600}
-        contentHeight={900}
-      >
+      <Deck transition={['fade']} transitionDuration={500} theme={theme} contentWidth={1600} contentHeight={900}>
         <Slide transition={[() => ({})]} bgImage={background} onActive={() => showSearchLight()}>
           <Text textSize="6rem" textColor="rgba(255, 255, 255, 0.85)" textFont="secondary">
             You should be using
@@ -93,14 +89,19 @@ export default class Presentation extends Component {
               <CodePane lang="markup" theme="light" source={require('raw-loader!./sample-svg.xml')} textSize={18} />
             </Fill>
             <Fill>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-                <g fill="darksalmon" stroke="gray">
-                  <rect x="10" y="10" width="20" height="20" />
-                  <circle cx="50" cy="20" r="10" />
-                  <polygon points="70 30, 90 30, 80 10" />
-                  <path d="M 100 20 C 105 50 115 -10 120 20" />
-                </g>
-              </svg>
+              <SampleSvg />
+            </Fill>
+          </Layout>
+        </Slide>
+        <Slide>
+          <Heading size={2}>SVG has a DOM</Heading>
+          <Layout>
+            <Fill>
+              <CodePane lang="markup" theme="light" source={require('raw-loader!./sample-svg.xml')} textSize={18} />
+              <LiveEdit code="// document.querySelector('.triangle').style.fill = 'green';"/>
+            </Fill>
+            <Fill>
+              <SampleSvg specialFill="red" />
             </Fill>
           </Layout>
         </Slide>
