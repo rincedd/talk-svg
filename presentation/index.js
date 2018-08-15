@@ -113,6 +113,31 @@ export default class Presentation extends Component {
           <Link href="https://caniuse.com/#feat=svg">https://caniuse.com/#feat=svg</Link>
         </Slide>
         <Slide>
+          <Heading size={2}>SVG is tiny</Heading>
+          <Layout>
+            <Fill>
+              <Text>186 KiB</Text>
+              <CodePane
+                overflow="hidden scroll"
+                height="1.5%"
+                lang="markup"
+                theme="light"
+                source={require('raw-loader!./tng-unoptimized-svg.xml')}
+              />
+            </Fill>
+            <Fill>
+              <Appear>
+                <div style={{marginLeft: '1rem'}}>
+                  <Text>330 B</Text>
+                  <CodePane lang="markup" theme="light" source={require('raw-loader!./tng-optimized-svg.xml')} />
+                  <Text>...if you do it right</Text>
+                </div>
+              </Appear>
+              <Image src={images.logo} margin="4rem 2rem"/>
+            </Fill>
+          </Layout>
+        </Slide>
+        <Slide>
           <Heading>use SVG for...</Heading>
         </Slide>
         <Slide>
@@ -177,7 +202,10 @@ export default class Presentation extends Component {
         </Slide>
         <Slide>
           <Heading size={2}>SVG icon options</Heading>
-          <CodePane source={require('raw-loader!./svg-icons.html')} theme="light" textSize={18} />
+          <CodePane lang="markup" source={require('raw-loader!./svg-icons.html')} theme="light" textSize={18} />
+        </Slide>
+        <Slide>
+          <Heading size={2}>Charts</Heading>
         </Slide>
         <Slide>
           <List>
@@ -192,6 +220,7 @@ export default class Presentation extends Component {
                 Caveats with external SVG sprites
               </Link>
             </ListItem>
+            <ListItem><Link href="https://jakearchibald.github.io/svgomg/">Online SVG optimizer</Link></ListItem>
           </List>
         </Slide>
       </Deck>

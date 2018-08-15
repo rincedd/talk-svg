@@ -1,8 +1,8 @@
-import 'brace/mode/javascript';
-import 'brace/theme/tomorrow';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import AceEditor from 'react-ace';
+import 'brace/mode/javascript';
+import 'brace/theme/tomorrow';
 
 export class LiveEdit extends Component {
   constructor(props) {
