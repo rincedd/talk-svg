@@ -1,0 +1,21 @@
+<!-- as image source -->
+<img src="twitter.svg">
+
+<!-- as background image -->
+<style>
+    .icon-twitter::before {
+        content: '';
+        background: url("twitter.svg");
+    }
+</style>
+<span class="icon-twitter" />
+
+<!-- inline -->
+<span><svg xmlns="http://www.w3.org/2000/svg"><path d="..." /></svg></span>
+
+<!-- referencing a symbol in an SVG "sprite sheet" -->
+<span>
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <use xlink:href="icons.svg#twitter" />
+    </svg>
+</span>

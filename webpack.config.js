@@ -25,7 +25,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'raw-loader'],
+        use: ['style-loader', 'css-loader'],
         include: __dirname
       },
       {
@@ -47,6 +47,13 @@ module.exports = {
         test: /\.jpg$/,
         use: 'url-loader?mimetype=image/jpg',
         include: path.join(__dirname, 'assets')
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)/,
+        use: [{
+          loader: 'file-loader'
+        }],
+        include: path.join(__dirname, 'assets', 'fonts')
       }
     ]
   }

@@ -1,17 +1,20 @@
 import 'normalize.css';
 import React, { Component } from 'react';
 import {
-  CodePane, Deck, Fill, Heading, Image, Layout, Link, List, ListItem, Slide, Text,
+  Appear, CodePane, Deck, Fill, Heading, Image, Layout, Link, List, ListItem, Slide, Text,
 } from 'spectacle';
 import createTheme from 'spectacle/lib/themes/default';
 import background from '../assets/donnie-rosie-605394-unsplash.jpg';
+import '../assets/icomoon.css';
 import { LiveEdit } from './live-edit';
 import { SampleSvg } from './sample-svg';
 import { hideSearchLight, showSearchLight } from './searchlight';
 
 const images = {
   logo: require('../assets/tng.svg'),
-  svgSupport: require('../assets/svg-support.png')
+  svgSupport: require('../assets/svg-support.png'),
+  imagesPng: require('../assets/images.png'),
+  imagesSvg: require('../assets/images.svg')
 };
 
 const theme = createTheme(
@@ -60,7 +63,14 @@ export default class Presentation extends Component {
           <Text textSize="6rem" textFont="secondary">
             in your web app
           </Text>
-          <div style={{ position: 'absolute', left: 0, right: 0, marginTop: '10rem' }}>
+          <div
+            style={{
+              position: 'absolute',
+              left: 0,
+              right: 0,
+              marginTop: '10rem'
+            }}
+          >
             <Text bold textColor="tertiary" margin="0.25rem auto 2rem auto">
               Gerd Zschaler
             </Text>
@@ -68,19 +78,16 @@ export default class Presentation extends Component {
           </div>
         </Slide>
         <Slide>
-          <Heading size={2}>Scalable Vector Graphics</Heading>
+          <Heading>Scalable Vector Graphics</Heading>
+        </Slide>
+        <Slide>
           <List>
-            <ListItem>always crisp - no scaling artifacts</ListItem>
+            <ListItem>always crisp - no scaling, no Retina hassle</ListItem>
             <ListItem>small filesize (if done properly)</ListItem>
             <ListItem>easily inlined - no extra HTTP requests</ListItem>
             <ListItem>scalable - perfect for responsive design</ListItem>
             <ListItem>navigable DOM - can be manipulated by CSS/JS</ListItem>
           </List>
-        </Slide>
-        <Slide>
-          <Heading size={2}>well supported!</Heading>
-          <Image width="80%" src={images.svgSupport} />
-          <Link href="https://caniuse.com/#feat=svg">https://caniuse.com/#feat=svg</Link>
         </Slide>
         <Slide>
           <Heading size={2}>SVG is code</Heading>
@@ -92,18 +99,100 @@ export default class Presentation extends Component {
               <SampleSvg />
             </Fill>
           </Layout>
+          <Appear>
+            <div>
+              <LiveEdit
+                code={"// ...and it comes with a DOM!\n\ndocument.querySelector('.triangle').style.fill = 'green';"}
+              />
+            </div>
+          </Appear>
         </Slide>
         <Slide>
-          <Heading size={2}>SVG has a DOM</Heading>
-          <Layout>
-            <Fill>
-              <CodePane lang="markup" theme="light" source={require('raw-loader!./sample-svg.xml')} textSize={18} />
-              <LiveEdit code="// document.querySelector('.triangle').style.fill = 'green';"/>
-            </Fill>
-            <Fill>
-              <SampleSvg specialFill="red" />
-            </Fill>
-          </Layout>
+          <Heading size={2}>SVG is well supported!</Heading>
+          <Image width="80%" src={images.svgSupport} />
+          <Link href="https://caniuse.com/#feat=svg">https://caniuse.com/#feat=svg</Link>
+        </Slide>
+        <Slide>
+          <Heading>use SVG for...</Heading>
+        </Slide>
+        <Slide>
+          <Heading size={2}>Icons</Heading>
+          <Appear>
+            <div>
+              <Layout style={{ alignItems: 'center' }}>
+                <Fill>bitmap 😱</Fill>
+                <Fill>
+                  <Image width={16} height={16} src={images.imagesPng} />
+                </Fill>
+                <Fill>
+                  <Image width={48} height={48} src={images.imagesPng} />
+                </Fill>
+                <Fill>
+                  <Image width={128} height={128} src={images.imagesPng} />
+                </Fill>
+                <Fill>
+                  <Image width={256} height={256} src={images.imagesPng} />
+                </Fill>
+              </Layout>
+            </div>
+          </Appear>
+          <Appear>
+            <div>
+              <Layout style={{ alignItems: 'center' }}>
+                <Fill>icon font ☺</Fill>
+                <Fill>
+                  <span className="icon-images" style={{ fontSize: '16px' }} />
+                </Fill>
+                <Fill>
+                  <span className="icon-images" style={{ fontSize: '48px' }} />
+                </Fill>
+                <Fill>
+                  <span className="icon-images" style={{ fontSize: '128px' }} />
+                </Fill>
+                <Fill>
+                  <span className="icon-images" style={{ fontSize: '256px' }} />
+                </Fill>
+              </Layout>
+            </div>
+          </Appear>
+          <Appear>
+            <div>
+              <Layout style={{ alignItems: 'center' }}>
+                <Fill>SVG 😄</Fill>
+                <Fill>
+                  <Image width={16} height={16} src={images.imagesSvg} />
+                </Fill>
+                <Fill>
+                  <Image width={48} height={48} src={images.imagesSvg} />
+                </Fill>
+                <Fill>
+                  <Image width={128} height={128} src={images.imagesSvg} />
+                </Fill>
+                <Fill>
+                  <Image width={256} height={256} src={images.imagesSvg} />
+                </Fill>
+              </Layout>
+            </div>
+          </Appear>
+        </Slide>
+        <Slide>
+          <Heading size={2}>SVG icon options</Heading>
+          <CodePane source={require('raw-loader!./svg-icons.html')} theme="light" textSize={18} />
+        </Slide>
+        <Slide>
+          <List>
+            <ListItem>
+              <Link href="https://devdocs.io/svg">devdocs.io/svg</Link>
+            </ListItem>
+            <ListItem>
+              <Link href="https://css-tricks.com/svg-sprites-use-better-icon-fonts/">SVG sprites for icons</Link>
+            </ListItem>
+            <ListItem>
+              <Link href="https://css-tricks.com/svg-use-with-external-reference-take-2/">
+                Caveats with external SVG sprites
+              </Link>
+            </ListItem>
+          </List>
         </Slide>
       </Deck>
     );

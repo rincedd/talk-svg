@@ -38,6 +38,13 @@ module.exports = {
       {
         test: /\.svg$/,
         use: 'url-loader?limit=10000&mimetype=image/svg+xml'
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)/,
+        use: [{
+          loader: 'file-loader'
+        }],
+        include: path.join(__dirname, 'assets', 'fonts')
       }
     ]
   }

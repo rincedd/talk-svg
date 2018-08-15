@@ -42,8 +42,8 @@ export class LiveEdit extends Component {
           {
             name: 'runCode',
             bindKey: { win: 'Ctrl-Return', mac: 'Command-Return' },
-            exec: this.boundRunCode
-          }
+            exec: this.boundRunCode,
+          },
         ]}
         style={{ marginTop: '1rem', backgroundColor: '#faf8f5' }}
       />
@@ -52,5 +52,5 @@ export class LiveEdit extends Component {
 }
 
 LiveEdit.propTypes = {
-  code: PropTypes.string
+  code: PropTypes.string,
 };
