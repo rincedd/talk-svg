@@ -39,6 +39,9 @@ const SearchLight = () => (
 const SEARCH_LIGHT_ID = 'search-light';
 
 export const showSearchLight = () => {
+  if (location.href.indexOf('presenter') > -1 || location.href.indexOf('overview') > -1) {
+    return;
+  }
   const searchLight = document.createElement('div');
   searchLight.setAttribute('id', SEARCH_LIGHT_ID);
   document.querySelector('body').appendChild(searchLight);

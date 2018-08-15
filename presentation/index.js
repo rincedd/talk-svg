@@ -83,7 +83,7 @@ export default class Presentation extends Component {
         <Slide>
           <List>
             <ListItem>always crisp - no scaling, no Retina hassle</ListItem>
-            <ListItem>small filesize (if done properly)</ListItem>
+            <ListItem>small filesize</ListItem>
             <ListItem>easily inlined - no extra HTTP requests</ListItem>
             <ListItem>scalable - perfect for responsive design</ListItem>
             <ListItem>navigable DOM - can be manipulated by CSS/JS</ListItem>
