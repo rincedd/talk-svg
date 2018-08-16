@@ -8,7 +8,7 @@ export class Pen extends Component {
   }
 
   render() {
-    let { hash, username, user } = this.props;
+    const { hash, username, user, height } = this.props;
     return (
       <React.Fragment>
         <Text textSize="2rem">
@@ -23,7 +23,7 @@ export class Pen extends Component {
           }}
         >
           <div
-            data-height="500"
+            data-height={height}
             data-theme-id="light"
             data-slug-hash={hash}
             data-default-tab="result"
@@ -38,8 +38,13 @@ export class Pen extends Component {
   }
 }
 
+Pen.defaultProps = {
+  height: 500
+};
+
 Pen.propTypes = {
   hash: PropTypes.string,
+  height: PropTypes.number,
   user: PropTypes.string,
   username: PropTypes.string
 };

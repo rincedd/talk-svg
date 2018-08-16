@@ -18,6 +18,7 @@ import {
 import createTheme from 'spectacle/lib/themes/default';
 import background from '../assets/donnie-rosie-605394-unsplash.jpg';
 import '../assets/icomoon.css';
+import { AnimationTitle } from './animation-title';
 import { EffectsTitle } from './effects-title';
 import { Flower } from './flower';
 import { ImagesSvg } from './images-svg';
@@ -278,19 +279,42 @@ export default class Presentation extends Component {
           </Link>
         </Slide>
         <Slide>
-          <Heading>Animation</Heading>
+          <AnimationTitle/>
         </Slide>
         <Slide>
           <Pen user="Sarah Drasner" username="sdras" hash="jPLgQM" />
+        </Slide>
+        <Slide>
+          <Pen user="Sarah Drasner" username="sdras" hash="waXKPw" height={600} />
+        </Slide>
+        <Slide>
+          <Pen user="Chris Gannon" username="chrisgannon" hash="LEQmwP"/>
+        </Slide>
+        <Slide>
+          <Pen user="Nikhil Krishnan" username="nikhil8krishnan" hash="rVoXJa"/>
+        </Slide>
+        <Slide>
+          <Pen user="Mikael Ainalem" username="ainalem" hash="aLKxjm"/>
+          <Text textSize="2rem">light-weight image preloaders</Text>
+        </Slide>
+        <Slide>
+          <Pen user="Sarah Drasner" username="sdras" hash="qEdova"/>
+          <Text textSize="2rem">animating <code>stroke-dasharray</code></Text>
         </Slide>
         <Slide>
           <EffectsTitle />
         </Slide>
         <Slide>
           <Pen user="Noel Delgado" username="noeldelgado" hash="PZJGLx" />
+          <Text textSize="2rem"><code>clip-path</code></Text>
         </Slide>
         <Slide>
           <Pen user="Dudley Storey" username="dudleystorey" hash="QvvEYQ" />
+          <Text textSize="2rem"><code>mask</code></Text>
+        </Slide>
+        <Slide>
+          <Pen user="Lucas Bebber" username="lbebber" hash="LELBEo" />
+          <Text textSize="2rem"><code>filter</code> can be applied to HTML elements!</Text>
         </Slide>
         <Slide>
           <Pen user="Gabi" username="enxaneta" hash="oYMxqe" />
