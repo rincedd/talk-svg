@@ -1,9 +1,9 @@
 import 'normalize.css';
 import React, { Component } from 'react';
 import {
-  Appear, CodePane, ComponentPlayground, Deck, Fill, Fit, Heading, Image, Layout, Link, List,
+  Appear, CodePane, Deck, Fill, Fit, Heading, Image, Layout, Link, List,
   ListItem,
-  Slide, Text,
+  Slide, Text
 } from 'spectacle';
 import createTheme from 'spectacle/lib/themes/default';
 import background from '../assets/donnie-rosie-605394-unsplash.jpg';
@@ -12,6 +12,7 @@ import { Flower } from './flower';
 import { LiveEdit } from './live-edit';
 import { SampleSvg } from './sample-svg';
 import { hideSearchLight, showSearchLight } from './searchlight';
+import './style.css';
 
 const images = {
   logo: require('../assets/tng.svg'),
@@ -44,7 +45,7 @@ const theme = createTheme(
 export default class Presentation extends Component {
   render() {
     return (
-      <Deck transition={['fade']} transitionDuration={500} theme={theme} contentWidth={1600} contentHeight={900}>
+      <Deck transition={['fade']} transitionDuration={500} theme={theme} contentWidth={1200}>
         <Slide transition={[() => ({})]} bgImage={background} onActive={() => showSearchLight()}>
           <Text textSize="6rem" textColor="rgba(255, 255, 255, 0.85)" textFont="secondary">
             You should be using
@@ -99,9 +100,9 @@ export default class Presentation extends Component {
             <Fill>
               <CodePane lang="markup" theme="light" source={require('raw-loader!./sample-svg.xml')} textSize={18} />
             </Fill>
-            <Fill>
+            <Fit>
               <SampleSvg />
-            </Fill>
+            </Fit>
           </Layout>
           <Appear>
             <div>
@@ -112,8 +113,7 @@ export default class Presentation extends Component {
           </Appear>
         </Slide>
         <Slide>
-          <Heading size={2}>SVG is well supported!</Heading>
-          <Image width="80%" src={images.svgSupport} />
+          <Image width="90%" src={images.svgSupport} />
           <Link href="https://caniuse.com/#feat=svg">https://caniuse.com/#feat=svg</Link>
         </Slide>
         <Slide>
@@ -129,16 +129,16 @@ export default class Presentation extends Component {
                 source={require('raw-loader!./tng-unoptimized-svg.xml')}
               />
             </Fill>
-            <Fill>
+            <Fit>
               <Appear>
                 <div style={{ marginLeft: '1rem' }}>
                   <Text>330 B</Text>
-                  <CodePane lang="markup" theme="light" source={require('raw-loader!./tng-optimized-svg.xml')} />
+                  <CodePane width="8rem" lang="markup" theme="light" source={require('raw-loader!./tng-optimized-svg.xml')} />
                   <Text>...if you do it right</Text>
                 </div>
               </Appear>
               <Image src={images.logo} margin="4rem 2rem" />
-            </Fill>
+            </Fit>
           </Layout>
         </Slide>
         <Slide>

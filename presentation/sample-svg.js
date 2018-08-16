@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 export const SampleSvg = ({ fill = 'darksalmon', stroke = 'gray' }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 90">
+  <svg style={{ width: '25rem' }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122 90">
     <g fill={fill} stroke={stroke}>
       <rect x="10" y="10" width="20" height="20" />
       <circle cx="50" cy="20" r="10" />
