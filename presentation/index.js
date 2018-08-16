@@ -1,14 +1,25 @@
 import 'normalize.css';
 import React, { Component } from 'react';
 import {
-  Appear, CodePane, Deck, Fill, Fit, Heading, Image, Layout, Link, List,
+  Appear,
+  CodePane,
+  Deck,
+  Fill,
+  Fit,
+  Heading,
+  Image,
+  Layout,
+  Link,
+  List,
   ListItem,
-  Slide, Text
+  Slide,
+  Text
 } from 'spectacle';
 import createTheme from 'spectacle/lib/themes/default';
 import background from '../assets/donnie-rosie-605394-unsplash.jpg';
 import '../assets/icomoon.css';
 import { Flower } from './flower';
+import { ImagesSvg } from './images-svg';
 import { LiveEdit } from './live-edit';
 import { SampleSvg } from './sample-svg';
 import { hideSearchLight, showSearchLight } from './searchlight';
@@ -17,8 +28,7 @@ import './style.css';
 const images = {
   logo: require('../assets/tng.svg'),
   svgSupport: require('../assets/svg-support.png'),
-  imagesPng: require('../assets/images.png'),
-  imagesSvg: require('../assets/images.svg')
+  imagesPng: require('../assets/images.png')
 };
 
 const theme = createTheme(
@@ -72,7 +82,7 @@ export default class Presentation extends Component {
               position: 'absolute',
               left: 0,
               right: 0,
-              marginTop: '10rem'
+              marginTop: '1ex'
             }}
           >
             <Text bold textColor="tertiary" margin="0.25rem auto 2rem auto">
@@ -86,12 +96,12 @@ export default class Presentation extends Component {
         </Slide>
         <Slide>
           <List>
-            <ListItem>always crisp - no scaling, no Retina hassle</ListItem>
+            <ListItem>crisp at any size, no Retina hassle</ListItem>
             <ListItem>small filesize</ListItem>
             <ListItem>easily inlined - no extra HTTP requests</ListItem>
             <ListItem>scalable - perfect for responsive design</ListItem>
             <ListItem>navigable DOM - can be manipulated by CSS/JS</ListItem>
-            <ListItem>navigable DOM - can be made accessible</ListItem>
+            <ListItem>markup - can be made accessible</ListItem>
           </List>
         </Slide>
         <Slide>
@@ -118,38 +128,53 @@ export default class Presentation extends Component {
         </Slide>
         <Slide>
           <Heading size={2}>SVG is tiny</Heading>
-          <Layout>
-            <Fill>
-              <Text>186 KiB</Text>
+          <div>
+            <div style={{ display: 'inline-block', width: '48%', verticalAlign: 'top' }}>
+              <Text textAlign="left">186 KiB</Text>
               <CodePane
                 overflow="hidden scroll"
-                height="1.5%"
+                height="40vh"
                 lang="markup"
                 theme="light"
                 source={require('raw-loader!./tng-unoptimized-svg.xml')}
               />
-            </Fill>
-            <Fit>
+            </div>
+            <div style={{ display: 'inline-block', width: '48%', verticalAlign: 'top', marginLeft: '1%' }}>
               <Appear>
-                <div style={{ marginLeft: '1rem' }}>
-                  <Text>330 B</Text>
-                  <CodePane width="8rem" lang="markup" theme="light" source={require('raw-loader!./tng-optimized-svg.xml')} />
+                <div>
+                  <Text textAlign="left">330 B</Text>
+                  <CodePane lang="markup" theme="light" source={require('raw-loader!./tng-optimized-svg.xml')} />
                   <Text>...if you do it right</Text>
                 </div>
               </Appear>
               <Image src={images.logo} margin="4rem 2rem" />
-            </Fit>
-          </Layout>
+            </div>
+          </div>
+        </Slide>
+        <Slide>
+          <Heading size={2}>Optimize!</Heading>
+          <List>
+            <ListItem>
+              get rid of useless markup (<code>metadata</code>, <code>descr</code>, ...)
+            </ListItem>
+            <ListItem>
+              use SVG optimizers like <Link href="https://github.com/svg/svgo">SVGO</Link>
+            </ListItem>
+          </List>
         </Slide>
         <Slide>
           <Heading size={2}>SVG is dynamic</Heading>
-          <Layout>
+          <Layout style={{ marginTop: '1rem' }}>
             <Fill>
-              <CodePane lang="jsx" theme="light" source={require('raw-loader!./flower.js.txt')} textSize={18}/>
+              <CodePane lang="jsx" theme="light" source={require('raw-loader!./flower.js.txt')} textSize={18} />
             </Fill>
-            <Fill><Flower/></Fill>
+            <Fit>
+              <Flower />
+              <Text margin="0 0 0 1rem" textAlign="left">
+                Fully supported in React and Vue
+              </Text>
+            </Fit>
           </Layout>
-          <Text>Fully supported in React and Vue</Text>
         </Slide>
         <Slide>
           <Heading>use SVG for...</Heading>
@@ -161,7 +186,7 @@ export default class Presentation extends Component {
           <Layout style={{ alignItems: 'center' }}>
             <Fill>bitmap 😱</Fill>
             <Fill>
-              <Image width={16} height={16} src={images.imagesPng} />
+              <Image width={32} height={32} src={images.imagesPng} />
             </Fill>
             <Fill>
               <Image width={48} height={48} src={images.imagesPng} />
@@ -170,15 +195,15 @@ export default class Presentation extends Component {
               <Image width={128} height={128} src={images.imagesPng} />
             </Fill>
             <Fill>
-              <Image width={256} height={256} src={images.imagesPng} />
+              <Image width={196} height={196} src={images.imagesPng} />
             </Fill>
           </Layout>
           <Appear>
             <div>
-              <Layout style={{ alignItems: 'center' }}>
+              <Layout style={{ alignItems: 'center', color: '#086eff' }}>
                 <Fill>icon font ☺</Fill>
                 <Fill>
-                  <span className="icon-images" style={{ fontSize: '16px' }} />
+                  <span className="icon-images" style={{ fontSize: '32px' }} />
                 </Fill>
                 <Fill>
                   <span className="icon-images" style={{ fontSize: '48px' }} />
@@ -187,26 +212,26 @@ export default class Presentation extends Component {
                   <span className="icon-images" style={{ fontSize: '128px' }} />
                 </Fill>
                 <Fill>
-                  <span className="icon-images" style={{ fontSize: '256px' }} />
+                  <span className="icon-images" style={{ fontSize: '196px' }} />
                 </Fill>
               </Layout>
             </div>
           </Appear>
           <Appear>
             <div>
-              <Layout style={{ alignItems: 'center' }}>
+              <Layout style={{ alignItems: 'center', color: '#086eff' }}>
                 <Fill>SVG 😄</Fill>
                 <Fill>
-                  <Image width={16} height={16} src={images.imagesSvg} />
+                  <ImagesSvg size={32}/>
                 </Fill>
                 <Fill>
-                  <Image width={48} height={48} src={images.imagesSvg} />
+                  <ImagesSvg size={48}/>
                 </Fill>
                 <Fill>
-                  <Image width={128} height={128} src={images.imagesSvg} />
+                  <ImagesSvg size={128}/>
                 </Fill>
                 <Fill>
-                  <Image width={256} height={256} src={images.imagesSvg} />
+                  <ImagesSvg size={196}/>
                 </Fill>
               </Layout>
             </div>
@@ -242,7 +267,9 @@ export default class Presentation extends Component {
             <Link href="https://twitter.com/sarah_edo">Sarah Drasner</Link>
           </Text>
         </Slide>
-        <Slide><Heading>Effects</Heading></Slide>
+        <Slide>
+          <Heading>Effects</Heading>
+        </Slide>
         <Slide>
           <Text>
             This <Link href="https://codepen.io/noeldelgado/full/PZJGLx/">pen</Link> by{' '}
@@ -278,7 +305,10 @@ export default class Presentation extends Component {
               </Link>
             </ListItem>
             <ListItem>
-              <Link href="https://jakearchibald.github.io/svgomg/">Online SVG optimizer</Link>
+              <Link href="https://github.com/svg/svgo">SVGO</Link>
+            </ListItem>
+            <ListItem>
+              <Link href="https://jakearchibald.github.io/svgomg/">SVGO's Missing GUI</Link>
             </ListItem>
           </List>
         </Slide>

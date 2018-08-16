@@ -35,7 +35,7 @@ export class LiveEdit extends Component {
         showGutter={false}
         highlightActiveLine
         width="100%"
-        height="6rem"
+        height="8rem"
         editorProps={{ $blockScrolling: true }}
         value={this.props.code || ''}
         commands={[
