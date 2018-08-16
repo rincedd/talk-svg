@@ -18,9 +18,11 @@ import {
 import createTheme from 'spectacle/lib/themes/default';
 import background from '../assets/donnie-rosie-605394-unsplash.jpg';
 import '../assets/icomoon.css';
+import { EffectsTitle } from './effects-title';
 import { Flower } from './flower';
 import { ImagesSvg } from './images-svg';
 import { LiveEdit } from './live-edit';
+import { Pen } from './pen';
 import { SampleSvg } from './sample-svg';
 import { hideSearchLight, showSearchLight } from './searchlight';
 import './style.css';
@@ -28,7 +30,8 @@ import './style.css';
 const images = {
   logo: require('../assets/tng.svg'),
   svgSupport: require('../assets/svg-support.png'),
-  imagesPng: require('../assets/images.png')
+  imagesPng: require('../assets/images.png'),
+  d3Web: require('../assets/d3.png')
 };
 
 const theme = createTheme(
@@ -55,7 +58,7 @@ const theme = createTheme(
 export default class Presentation extends Component {
   render() {
     return (
-      <Deck transition={['fade']} transitionDuration={500} theme={theme} contentWidth={1200}>
+      <Deck transition={['fade']} transitionDuration={500} theme={theme} contentWidth={1200} contentHeight={900}>
         <Slide transition={[() => ({})]} bgImage={background} onActive={() => showSearchLight()}>
           <Text textSize="6rem" textColor="rgba(255, 255, 255, 0.85)" textFont="secondary">
             You should be using
@@ -117,7 +120,7 @@ export default class Presentation extends Component {
           <Appear>
             <div>
               <LiveEdit
-                code={"// ...and it comes with a DOM!\n\ndocument.querySelector('.triangle').style.fill = 'green';"}
+                code={"// ...and it comes with a DOM!\n\ndocument.querySelector('.triangle').style.fill = '#03A9FC';"}
               />
             </div>
           </Appear>
@@ -200,7 +203,7 @@ export default class Presentation extends Component {
           </Layout>
           <Appear>
             <div>
-              <Layout style={{ alignItems: 'center', color: '#086eff' }}>
+              <Layout style={{ alignItems: 'center', color: '#03A9FC' }}>
                 <Fill>icon font ☺</Fill>
                 <Fill>
                   <span className="icon-images" style={{ fontSize: '32px' }} />
@@ -219,19 +222,19 @@ export default class Presentation extends Component {
           </Appear>
           <Appear>
             <div>
-              <Layout style={{ alignItems: 'center', color: '#086eff' }}>
+              <Layout style={{ alignItems: 'center', color: '#03A9FC' }}>
                 <Fill>SVG 😄</Fill>
                 <Fill>
-                  <ImagesSvg size={32}/>
+                  <ImagesSvg size={32} />
                 </Fill>
                 <Fill>
-                  <ImagesSvg size={48}/>
+                  <ImagesSvg size={48} />
                 </Fill>
                 <Fill>
-                  <ImagesSvg size={128}/>
+                  <ImagesSvg size={128} />
                 </Fill>
                 <Fill>
-                  <ImagesSvg size={196}/>
+                  <ImagesSvg size={196} />
                 </Fill>
               </Layout>
             </div>
@@ -253,40 +256,44 @@ export default class Presentation extends Component {
           </List>
         </Slide>
         <Slide>
-          <Text>
-            This <Link href="https://codepen.io/team/amcharts/pen/VmMagp">pen</Link> by{' '}
-            <Link href="https://codepen.io/team/amcharts/">amCharts</Link>
+          <Pen user="JANA" username="adeveloperdiary" hash="oxxRyN" />
+        </Slide>
+        <Slide>
+          <Pen user="amCharts" username="team/amcharts" hash="VmMagp" />
+          <Text>enriched with WAI-ARIA attributes for a11y</Text>
+        </Slide>
+        <Slide>
+          <iframe
+            src="https://www.gapminder.org/tools/?embedded=true#$chart-type=bubbles"
+            style={{ width: '100%', height: '500px', border: '0' }}
+            allowFullScreen
+          />
+          <Text textSize="16px">
+            <Link href="//www.gapminder.org">www.gapminder.org</Link>
           </Text>
+        </Slide>
+        <Slide>
+          <Link href="https://bl.ocks.org/mbostock/1256572">
+            <Image src={images.d3Web} />
+          </Link>
         </Slide>
         <Slide>
           <Heading>Animation</Heading>
         </Slide>
         <Slide>
-          <Text>
-            This <Link href="https://codepen.io/sdras/full/jPLgQM">pen</Link> by{' '}
-            <Link href="https://twitter.com/sarah_edo">Sarah Drasner</Link>
-          </Text>
+          <Pen user="Sarah Drasner" username="sdras" hash="jPLgQM" />
         </Slide>
         <Slide>
-          <Heading>Effects</Heading>
+          <EffectsTitle />
         </Slide>
         <Slide>
-          <Text>
-            This <Link href="https://codepen.io/noeldelgado/full/PZJGLx/">pen</Link> by{' '}
-            <Link href="https://codepen.io/noeldelgado/">Noel Delgado</Link>
-          </Text>
+          <Pen user="Noel Delgado" username="noeldelgado" hash="PZJGLx" />
         </Slide>
         <Slide>
-          <Text>
-            This <Link href="https://codepen.io/dudleystorey/full/QvvEYQ/">pen</Link> by{' '}
-            <Link href="https://codepen.io/dudleystorey/">Dudley Storey</Link>
-          </Text>
+          <Pen user="Dudley Storey" username="dudleystorey" hash="QvvEYQ" />
         </Slide>
         <Slide>
-          <Text>
-            This <Link href="https://codepen.io/enxaneta/full/oYMxqe/">pen</Link> by{' '}
-            <Link href="https://codepen.io/enxaneta/">Gabi</Link>
-          </Text>
+          <Pen user="Gabi" username="enxaneta" hash="oYMxqe" />
         </Slide>
         <Slide>
           <List>
