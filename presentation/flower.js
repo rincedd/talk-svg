@@ -28,11 +28,18 @@ export class Flower extends Component {
       .map((_, i) => (i * 360) / numPetals);
     return (
       <div>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -40 100 80" style={{width: '20rem'}}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -40 100 80" style={{ width: '20rem' }}>
           {angles.map((a) => <Petal key={a} angle={a} />)}
         </svg>
-        <button onClick={() => this.setState({ numPetals: this.state.numPetals + 1 })}> + </button>
-        <button onClick={() => this.setState({ numPetals: Math.max(0, this.state.numPetals - 1) })}> - </button>
+        <input
+          name="numPetals"
+          type="range"
+          min="0"
+          max="30"
+          step="1"
+          defaultValue={3}
+          onChange={(e) => this.setState({ numPetals: Number(e.target.value) })}
+        />
       </div>
     );
   }
