@@ -19,6 +19,7 @@ import createTheme from 'spectacle/lib/themes/default';
 import background from '../assets/donnie-rosie-605394-unsplash.jpg';
 import '../assets/icomoon.css';
 import { AnimationTitle } from './animation-title';
+import { Checkbox } from './checkbox';
 import { EffectsTitle } from './effects-title';
 import { Flower } from './flower';
 import { ImagesSvg } from './images-svg';
@@ -59,7 +60,7 @@ const theme = createTheme(
 export default class Presentation extends Component {
   render() {
     return (
-      <Deck transition={['fade']} transitionDuration={500} theme={theme} contentWidth={1200} contentHeight={900}>
+      <Deck transition={['fade']} transitionDuration={500} theme={theme} contentWidth={1600} contentHeight={1200}>
         <Slide transition={[() => ({})]} bgImage={background} onActive={() => showSearchLight()}>
           <Text textSize="6rem" textColor="rgba(255, 255, 255, 0.85)" textFont="secondary">
             You should be using
@@ -99,13 +100,35 @@ export default class Presentation extends Component {
           <Heading>Scalable Vector Graphics</Heading>
         </Slide>
         <Slide>
-          <List>
-            <ListItem>crisp at any size, no Retina hassle</ListItem>
-            <ListItem>small filesize</ListItem>
-            <ListItem>easily inlined - no extra HTTP requests</ListItem>
-            <ListItem>scalable - perfect for responsive design</ListItem>
-            <ListItem>navigable DOM - can be manipulated by CSS/JS</ListItem>
-            <ListItem>markup - can be made accessible</ListItem>
+          <List style={{ listStyle: 'none' }}>
+            <ListItem>
+              <Checkbox checked>crisp at any size - no artifacts, no Retina hassle</Checkbox>
+            </ListItem>
+            <Appear>
+              <ListItem>
+                <Checkbox checked>text - small filesize</Checkbox>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                <Checkbox checked>easily inlined - no extra HTTP requests</Checkbox>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                <Checkbox checked>scalable - perfect for responsive design</Checkbox>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                <Checkbox checked>navigable DOM - can be manipulated by CSS/JS</Checkbox>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                <Checkbox checked>markup - can be made accessible</Checkbox>
+              </ListItem>
+            </Appear>
           </List>
         </Slide>
         <Slide>
@@ -246,15 +269,35 @@ export default class Presentation extends Component {
           <CodePane lang="markup" source={require('raw-loader!./svg-icons.html')} theme="light" textSize={18} />
         </Slide>
         <Slide>
-          <Heading>Charts</Heading>
+          <Heading>Custom UI</Heading>
         </Slide>
         <Slide>
-          <Heading size={2}>Charts</Heading>
-          <List>
-            <ListItem>dynamic</ListItem>
-            <ListItem>accessible</ListItem>
-            <ListItem>interactive</ListItem>
-          </List>
+          <Layout>
+            <Fill>
+              <List style={{ listStyle: 'none' }}>
+                <ListItem>
+                  <Checkbox>more powerful</Checkbox>
+                </ListItem>
+                <ListItem>
+                  <Checkbox type="cross">and expressive</Checkbox>
+                </ListItem>
+                <ListItem>
+                  <Checkbox type="checkmark" checked>than CSS-only graphics</Checkbox>
+                </ListItem>
+              </List>
+            </Fill>
+            <Fill>
+              <CodePane lang="markup" theme="light" textSize={18} source={require('raw-loader!./svg-checkbox.html')} />
+            </Fill>
+          </Layout>
+          <Text textSize={20} margin="4rem 0 0 0">
+            <Link href="https://theblog.adobe.com/css-vs-svg-styling-checkboxes-and-radio-buttons/">
+              by Sara Soueidan
+            </Link>
+          </Text>
+        </Slide>
+        <Slide>
+          <Heading>Interactive charts</Heading>
         </Slide>
         <Slide>
           <Pen user="JANA" username="adeveloperdiary" hash="oxxRyN" />
@@ -266,7 +309,7 @@ export default class Presentation extends Component {
         <Slide>
           <iframe
             src="https://www.gapminder.org/tools/?embedded=true#$chart-type=bubbles"
-            style={{ width: '100%', height: '500px', border: '0' }}
+            style={{ width: '100%', height: '600px', border: '0' }}
             allowFullScreen
           />
           <Text textSize="16px">
@@ -279,45 +322,56 @@ export default class Presentation extends Component {
           </Link>
         </Slide>
         <Slide>
-          <AnimationTitle/>
+          <AnimationTitle />
         </Slide>
         <Slide>
           <Pen user="Sarah Drasner" username="sdras" hash="jPLgQM" />
         </Slide>
         <Slide>
-          <Pen user="Sarah Drasner" username="sdras" hash="waXKPw" height={600} />
+          <Pen user="Sarah Drasner" username="sdras" hash="waXKPw" height={700} />
         </Slide>
         <Slide>
-          <Pen user="Chris Gannon" username="chrisgannon" hash="LEQmwP"/>
+          <Pen user="Chris Gannon" username="chrisgannon" hash="LEQmwP" />
         </Slide>
         <Slide>
-          <Pen user="Nikhil Krishnan" username="nikhil8krishnan" hash="rVoXJa"/>
+          <Pen user="Nikhil Krishnan" username="nikhil8krishnan" hash="rVoXJa" />
         </Slide>
         <Slide>
-          <Pen user="Mikael Ainalem" username="ainalem" hash="aLKxjm"/>
+          <Pen user="Mikael Ainalem" username="ainalem" hash="aLKxjm" />
           <Text textSize="2rem">light-weight image preloaders</Text>
         </Slide>
         <Slide>
-          <Pen user="Sarah Drasner" username="sdras" hash="qEdova"/>
-          <Text textSize="2rem">animating <code>stroke-dasharray</code></Text>
+          <Pen user="Sarah Drasner" username="sdras" hash="qEdova" height={700}/>
+          <Text textSize="2rem">
+            animating <code>stroke-dasharray</code>
+          </Text>
         </Slide>
         <Slide>
           <EffectsTitle />
         </Slide>
         <Slide>
           <Pen user="Noel Delgado" username="noeldelgado" hash="PZJGLx" />
-          <Text textSize="2rem"><code>clip-path</code></Text>
+          <Text textSize="2rem">
+            <code>clip-path</code>
+          </Text>
         </Slide>
         <Slide>
           <Pen user="Dudley Storey" username="dudleystorey" hash="QvvEYQ" />
-          <Text textSize="2rem"><code>mask</code></Text>
+          <Text textSize="2rem">
+            <code>mask</code>
+          </Text>
         </Slide>
         <Slide>
           <Pen user="Lucas Bebber" username="lbebber" hash="LELBEo" />
-          <Text textSize="2rem"><code>filter</code> can be applied to HTML elements!</Text>
+          <Text textSize="2rem">
+            <code>filter</code> can be applied to HTML elements!
+          </Text>
         </Slide>
         <Slide>
           <Pen user="Gabi" username="enxaneta" hash="oYMxqe" />
+        </Slide>
+        <Slide transition={['slide']}>
+          <Heading size={2}>use SVG now!</Heading>
         </Slide>
         <Slide>
           <List>

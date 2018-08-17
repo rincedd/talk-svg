@@ -39,7 +39,7 @@ export class Pen extends Component {
 }
 
 Pen.defaultProps = {
-  height: 500
+  height: 600
 };
 
 Pen.propTypes = {
